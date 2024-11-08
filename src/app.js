@@ -2,6 +2,21 @@ const express= require("express");
 
 const app= express();
 
+//: means its a dynamic route 
+app.get("/user/:userId" , (req, res)=>{
+    console.log(req.params);
+    res.send({firstname : "Akash" , lastname : "pathak"});
+});
+
+
+// this  is how you read the query parameters
+app.get("/user" , (req, res)=>{
+    console.log(req.query);
+    res.send({firstname : "Akash" , lastname : "pathak"});
+});
+
+
+
 
 //this will only handle GET calls to /user 
 app.get("/user" , (req, res)=>{
@@ -35,6 +50,9 @@ app.get("/a(bc)?d" , (req, res)=>{
 app.get(/a/ , (req, res)=>{
     res.send({firstname : "Akash" , lastname : "pathak"});
 });
+
+
+
 
 app.post("/user" , (req,res)=>{
     console.log("save the data to the database");
